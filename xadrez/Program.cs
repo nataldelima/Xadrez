@@ -16,16 +16,12 @@ class Program
                 try
                 {
                     Console.Clear();
-                    Tela.imprimirTabueiro(partida.tab);
-                    Console.WriteLine();
-                    Console.WriteLine($"Turno: {partida.turno}");
-                    Console.WriteLine($"Aguardando jogada: {partida.jogadorAtual}");
+                    Tela.imprimirPartida(partida);
 
                     Console.WriteLine();
                     Console.Write("Origem:  ");
                     Posicao origem = Tela.lerPosicaoXadrex().toPosicao();
                     partida.validarPosicaoDeOrigem(origem);
-
                     bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
 
                     Console.Clear();
