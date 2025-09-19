@@ -12,11 +12,20 @@ public class Tela
         Console.WriteLine();
         imprimirPecasCapturadas(partida);
         Console.WriteLine($"\n\nTurno: {partida.turno}");
-        Console.WriteLine($"Aguardando jogada: {partida.jogadorAtual}");
-        if (partida.xeque)
+        if (!partida.terminada)
         {
-            Console.WriteLine("XEQUE!");
+            Console.WriteLine($"Aguardando jogada: {partida.jogadorAtual}");
+            if (partida.xeque)
+            {
+                Console.WriteLine("XEQUE!");
+            }
         }
+        else
+        {
+            Console.WriteLine("XEQUEMATE!");
+            Console.WriteLine($"Vencedor: {partida.jogadorAtual}");
+        }
+
     }
     public static void imprimirPecasCapturadas(PartidaDeXadrez partida)
     {
@@ -29,7 +38,6 @@ public class Tela
         imprimirConjunto(partida.pecasCapturadas(Cor.Preta));
         Console.ForegroundColor = aux;
     }
-
     public static void imprimirConjunto(HashSet<Peca> conjunto)
     {
         Console.Write("[");
@@ -110,7 +118,6 @@ public class Tela
                 Console.Write(peca);
                 Console.ForegroundColor = aux;
             }
-
             Console.Write(" ");
         }
     }
